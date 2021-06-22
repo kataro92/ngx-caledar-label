@@ -1,0 +1,21 @@
+
+<div class="dcl-content">
+  <input class="form-input" type="text" (focus)="actFocusInput()" (focusout)="actFocusoutInput()" #dateInput/>
+  <div class="dcl-table" style="{{dclTableStyle}}" (click)="actFocusCalendarInput()" (focusout)="actFocusoutInput()">
+    <div class="dcl-header">
+      <div (click)="actPrevMonth()"><</div>
+      <div colspan="5">{{slMonthStr}}</div>
+      <div (click)="actNextMonth()">></div>
+    </div>
+    <div class="dcl-week-label">
+      <div *ngFor="let wDay of weekDayActualLabels" class="dcl-wday-{{wDay.weekDay}}">{{wDay.title}}</div>
+    </div>
+    <div *ngFor="let dWeek of weekDatas" class="dcl-day-label">
+      <div *ngFor="let dData of dWeek.dayDatas" class="dcl-wday-{{dData.weekDay}}"
+      [ngClass]="{'dcl-wday-disabled': !dData.isCurrentMonth, 'dcl-wday-selected': dData.isSelected, 'dcl-wday-disabledd': dData.isDisabled}"
+      (click)="actSelectDay(dData.currentDate)">
+      <span class="dcl-day">{{dData.dayOfMonth}}</span>
+      <span class="dcl-info">{{dData.title}}</span>
+    </div>
+  </div>
+</div>

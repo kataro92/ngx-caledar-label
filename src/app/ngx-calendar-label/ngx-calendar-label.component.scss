@@ -1,0 +1,123 @@
+// Config
+$border-color: #494949;
+$block-width: 35px;
+$block-height: 48px;
+$border-width: 1px;
+$week-label-height: 20px;
+$header-backcolor: #20d188;
+$header-textcolor: white;
+$header-height: 30px;
+$hud-bottom: 2px;
+
+// Init style
+.dcl-table {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  background-color: #f9fff6;
+  width: ($block-width + $border-width) * 7 + $border-width;
+  position: absolute;
+  .dcl-header, .dcl-week-label, .dcl-day-label {
+    font-size: 16px;
+    text-align: center;
+    div {
+      border-bottom: $border-width solid $border-color;
+      border-left: $border-width solid $border-color;
+      display: block;
+      width: $block-width;
+      height: $block-height;
+      float: left;
+    }
+    div:last-child {
+      border-right: $border-width solid $border-color;
+    }
+  }
+  .dcl-header {
+    div {
+      border-top: $border-width solid $border-color;
+      background-color: $header-backcolor;
+      color: $header-textcolor;
+      vertical-align: middle;
+      height: $header-height;
+      line-height: $header-height - $hud-bottom;
+      font-weight: 600;
+    }
+    div:last-child {
+      cursor: pointer;
+      border-right: $border-width solid $border-color;
+    }
+    div:nth-child(2) {
+      width: ($block-width + $border-width) * 5 - $border-width;
+    }
+    div:nth-child(1) {
+      cursor: pointer;
+    }
+  }
+  .dcl-week-label {
+    font-size: 12px;
+    font-weight: 400;
+    max-height: $week-label-height + $border-width;
+    div {
+      max-height: $week-label-height;
+      line-height: $week-label-height - $hud-bottom;
+    }
+  }
+  .dcl-week-label, .dcl-day-label {
+    height: $block-height + $border-width;
+  }
+  .dcl-day-label div:hover:not(.dcl-wday-disabled, .dcl-wday-disabledd) {
+    .dcl-info {
+      background-color: #feeb8c;
+    }
+    background-color: #feeb8c;
+    cursor: pointer;
+  }
+  .dcl-wday-selected {
+    background-color: #fdec96;
+    .dcl-info {
+      background-color: #fdec96;
+    }
+  }
+  .dcl-day {
+    display: block;
+    width: $block-width;
+    height: $block-height - 20;
+  }
+  .dcl-info {
+    display: block;
+    width: $block-width;
+    height: 20px;
+    background-color: #ecffe8;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .dcl-wday-disabled {
+    color: #fff;
+    background-color: #dbdbdb;
+    span {
+      color: #fff;
+      background-color: #dbdbdb;
+    }
+  }
+  .dcl-wday-disabledd {
+    color: #fff;
+    background-color: #ababab;
+    span {
+      color: #fff;
+      background-color: #ababab;
+    }
+  }
+  .dcl-wday-6 {
+    color: #187bc1;
+    font-weight: 600;
+    span {
+      color: #187bc1;
+    }
+  }
+  .dcl-wday-0 {
+    color: #dc4848;
+    font-weight: 600;
+    span {
+      color: #dc4848;
+    }
+  }
+}
