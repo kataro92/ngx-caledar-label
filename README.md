@@ -2,13 +2,67 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
 
+## Installation
+### Package (not working yet)
+`npm install ngx-calendar-label --save`
+
+### Usage
+
+#### module.ts:
+(eg: app.module.ts)
+
+~~~
+// ...
+import { NgxCalendarLabelComponent } from './ngx-calendar-label/ngx-calendar-label.component';
+// ...
+
+@NgModule({
+  // ...
+	declarations: [
+    // ...
+		NgxCalendarLabelComponent,
+    // ...
+  ]
+  // ...
+})
+~~~
+
+
+#### in component.ts:
+(eg: app.component.ts)
+~~~
+// ...
+
+export class CalendarComponent implements OnInit {
+  
+  // ...
+  testData = [
+    {
+      date: '2021-06-01', // The date which have data
+      title: '10人', // Your custom label
+    },
+    {
+      date: '2021-06-26', // The date which have data
+      disabled: '1', // The day is disabled or not ("1": Disabled, anything else: Normal)
+      title: '10人', // Your custom label
+    },
+  ];
+
+  // ...
+}
+~~~
+
+#### in component.html:
+(eg: app.component.html)
+~~~
+// ...
+<ngx-calendar-label value="2021-06-21" startWeek="1" [data]="testData"></ngx-calendar-label>
+// ...
+~~~
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
