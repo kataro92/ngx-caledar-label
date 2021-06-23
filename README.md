@@ -1,6 +1,7 @@
 # NgxCaledarLabel
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+## A Simple date picker with custom label each day
+![image](https://user-images.githubusercontent.com/6007508/123023503-adbf8e00-d401-11eb-8171-c7af23c9fa13.png)
+![image](https://user-images.githubusercontent.com/6007508/123023313-60dbb780-d401-11eb-9c54-1e2b22fcfb4f.png)
 
 ## Installation
 ### Package (not working yet)
