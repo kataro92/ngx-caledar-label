@@ -1,7 +1,6 @@
-
 <div class="dcl-content">
-  <input class="form-input" type="text" (focus)="actFocusInput()" (focusout)="actFocusoutInput()" #dateInput/>
-  <div class="dcl-table" style="{{dclTableStyle}}" (click)="actFocusCalendarInput()" (focusout)="actFocusoutInput()">
+  <input maxlength="10" class="form-input" type="text" (focus)="actFocusInput()" (focusout)="actFocusoutInput()" #dateInput (keypress)="numericOnly($event)" (keyup)="checkIfNeedReload()"/>
+  <div class="dcl-table {{dclTableStyle}}" (click)="actFocusCalendarInput()" (focusout)="actFocusoutInput()">
     <div class="dcl-header">
       <div (click)="actPrevMonth()"><</div>
       <div colspan="5">{{slMonthStr}}</div>

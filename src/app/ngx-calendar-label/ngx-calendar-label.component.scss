@@ -9,6 +9,12 @@ $header-textcolor: white;
 $header-height: 30px;
 $hud-bottom: 2px;
 
+.display-none {
+  display: none;
+}
+.display-block {
+  display: block;
+}
 // Init style
 .dcl-table {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

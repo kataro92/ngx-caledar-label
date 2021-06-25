@@ -14,6 +14,7 @@ export class NgxCalendarLabelComponent implements OnInit {
   @Input() value: string;
   @Input() startWeek: string;
   @Input() data: any[];
+  @Input() displayType: string;
   weekDatas: any[];
   weekDayLabels: string[];
   weekDayActualLabels: any[];
@@ -30,7 +31,8 @@ export class NgxCalendarLabelComponent implements OnInit {
     this.startWeek = '';
     this.data = [];
     this.onShow = false;
-    this.dclTableStyle = 'display: none';
+    this.dclTableStyle = 'display-none';
+    this.displayType = '';
   }
 
   ngOnInit(): void {
@@ -44,6 +46,11 @@ export class NgxCalendarLabelComponent implements OnInit {
     // If no option start week, start at monday
     if (typeof this.startWeek === 'undefined' || this.startWeek === '') {
       this.startWeek = '0';
+    }
+    // "input": show a input and display calendar when click
+    // "calendar": always show calendar and hide the input
+    if (typeof this.displayType === 'undefined' || this.displayType === '') {
+      this.displayType = 'input';
     }
     this.initData(this.value, this.startWeek, this.data);
   }
@@ -107,6 +114,9 @@ export class NgxCalendarLabelComponent implements OnInit {
       };
       this.weekDatas.push(rowData);
     }
+    if (typeof this.dateInput != 'undefined') {
+      this.dateInput.nativeElement.value = value;
+    }
   }
 
   actPrevMonth() {
@@ -145,9 +155,9 @@ export class NgxCalendarLabelComponent implements OnInit {
 
   validateStyle() {
     if (this.onShow) {
-      this.dclTableStyle = 'display: block';
+      this.dclTableStyle = 'display-block';
     } else {
-      this.dclTableStyle = 'display: none';
+      this.dclTableStyle = 'display-none';
     }
   }
 
@@ -161,4 +171,16 @@ export class NgxCalendarLabelComponent implements OnInit {
     return 0;
   }
 
+  numericOnly(event: { key: string; }): boolean {
+    let patt = /^\d|-$/;
+    let result = patt.test(event.key);
+    return result;
+  }
+
+  checkIfNeedReload() {
+    if (this.dateInput.nativeElement.value.length === 10) {
+      this.value = this.dateInput.nativeElement.value;
+      this.initData(this.value, this.startWeek, this.data);
+    }
+  }
 }
