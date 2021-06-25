@@ -2,6 +2,7 @@
 ## A Simple date picker with custom label each day
 ![image](https://user-images.githubusercontent.com/6007508/123023503-adbf8e00-d401-11eb-8171-c7af23c9fa13.png)
 ![image](https://user-images.githubusercontent.com/6007508/123023313-60dbb780-d401-11eb-9c54-1e2b22fcfb4f.png)
+![image](https://user-images.githubusercontent.com/6007508/123387466-02aa0280-d5c2-11eb-8940-db32985a47f0.png)
 
 ## Installation
 ### Package (not working yet)
