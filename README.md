@@ -1,83 +1,109 @@
-# NgxCaledarLabel
-## A Simple date picker with custom label each day
+# ngx-calendar-label
+
+A simple Angular date picker component with custom labels for each day.
+
 ![image](https://user-images.githubusercontent.com/6007508/123023503-adbf8e00-d401-11eb-8171-c7af23c9fa13.png)
 ![image](https://user-images.githubusercontent.com/6007508/123023313-60dbb780-d401-11eb-9c54-1e2b22fcfb4f.png)
 ![image](https://user-images.githubusercontent.com/6007508/123387466-02aa0280-d5c2-11eb-8940-db32985a47f0.png)
 
+## Features
+
+- Display a calendar with custom labels on specific dates
+- Configurable start day of the week
+- Two display modes: inline input or always-visible calendar
+- Disable specific dates
+- Navigate between months
+
 ## Installation
-### Package (not working yet)
-`npm install ngx-calendar-label --save`
 
-### Usage
+```bash
+npm install ngx-calendar-label --save
+```
 
-#### module.ts:
-(eg: app.module.ts)
+## Usage
 
-~~~
-// ...
+### 1. Import the component
+
+Add `NgxCalendarLabelComponent` to your module declarations:
+
+```typescript
 import { NgxCalendarLabelComponent } from './ngx-calendar-label/ngx-calendar-label.component';
-// ...
 
 @NgModule({
-  // ...
-	declarations: [
-    // ...
-		NgxCalendarLabelComponent,
-    // ...
-  ]
-  // ...
+  declarations: [
+    NgxCalendarLabelComponent,
+  ],
 })
-~~~
+export class AppModule {}
+```
 
+### 2. Prepare your data
 
-#### in component.ts:
-(eg: app.component.ts)
-~~~
-// ...
+Define an array of date entries with labels in your component:
 
-export class CalendarComponent implements OnInit {
-  
-  // ...
-  testData = [
+```typescript
+export class AppComponent {
+  calendarData = [
     {
-      date: '2021-06-01', // The date which have data
-      title: '10人', // Your custom label
+      date: '2021-06-01',
+      title: '10人',
     },
     {
-      date: '2021-06-26', // The date which have data
-      disabled: '1', // The day is disabled or not ("1": Disabled, anything else: Normal)
-      title: '10人', // Your custom label
+      date: '2021-06-15',
+      title: '5人',
+    },
+    {
+      date: '2021-06-26',
+      disabled: '1',
+      title: '休み',
     },
   ];
-
-  // ...
 }
-~~~
+```
 
-#### in component.html:
-(eg: app.component.html)
-~~~
-// ...
-<ngx-calendar-label value="2021-06-21" startWeek="1" [data]="testData"></ngx-calendar-label>
-// ...
-~~~
+### 3. Add the component to your template
 
-## Development server
+```html
+<ngx-calendar-label
+  value="2021-06-21"
+  startWeek="1"
+  displayType="input"
+  [data]="calendarData">
+</ngx-calendar-label>
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## API
 
-## Build
+### Inputs
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+| Input         | Type     | Default   | Description                                                                 |
+|---------------|----------|-----------|-----------------------------------------------------------------------------|
+| `value`       | `string` | today     | Selected date in `YYYY-MM-DD` format                                        |
+| `startWeek`   | `string` | `"0"`     | Day the week starts on (`"0"` = Sunday, `"1"` = Monday, etc.)               |
+| `data`        | `any[]`  | `[]`      | Array of date entries (see below)                                           |
+| `displayType` | `string` | `"input"` | `"input"` shows a text input that toggles the calendar; `"calendar"` always shows the calendar |
 
-## Running unit tests
+### Data entry format
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Property   | Type     | Required | Description                                              |
+|------------|----------|----------|----------------------------------------------------------|
+| `date`     | `string` | Yes      | Date in `YYYY-MM-DD` format                              |
+| `title`    | `string` | No       | Custom label to display on the date cell                 |
+| `disabled` | `string` | No       | `"1"` or `"true"` to disable the date; omit for normal   |
 
-## Running end-to-end tests
+## Development
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+# Start dev server at http://localhost:4200/
+ng serve
 
-## Further help
+# Build the project
+ng build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Run unit tests
+ng test
+```
+
+## License
+
+[MIT](./LICENSE)
